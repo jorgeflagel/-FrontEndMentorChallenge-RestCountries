@@ -8,24 +8,31 @@ const Form = styled.form`
     gap: 24px;
     align-items: center;
     width: 100%;
+    background-color: ${props => props.theme.backgroundLightColor};
+    height: 56px;
+    padding: 18px 32px;
+    border-radius: 5px;
     button {
         cursor: pointer;
-        background: transparent;    
+        background: transparent;  
     }
     input {
         width: 100%;
+        background-color: ${props => props.theme.backgroundLightColor};
+        color: ${props => props.theme.inputColor};
     }
     @media screen and (min-width:764px) {
         width: 480px;
     }
 `
 
-export default function SearchCountry({name, setName, setCountries, setError}) {
+export default function SearchCountry({name, setName, setCountries, setError, setIsLoading}) {
 
     const handleChange = (e) => setName(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         let [error, data] = [];
         if(!name) {
             [error, data] = await getAllCountries();
@@ -35,6 +42,7 @@ export default function SearchCountry({name, setName, setCountries, setError}) {
         setError(error);
         setCountries(data);
         setName("");
+        setIsLoading(false);
     }
 
     return (

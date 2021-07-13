@@ -12,6 +12,9 @@ const BorderList = styled.div`
         min-height: 28px;
         padding: 6px;
         cursor: pointer;
+        background-color: ${props => props.theme.backgroundLightColor};
+        border-radius: 5px;
+        color: ${props => props.theme.textColor}
     }
 `
 

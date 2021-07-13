@@ -7,6 +7,14 @@ import ListCountries from './pages/ListCountries';
 import DetailCountry from './pages/DetailCountry';
 
 import { getAllCountries } from './helpers/fetchCountries';
+import styled, { ThemeProvider } from 'styled-components';
+import { darkTheme, lightTheme } from './theme/themes';
+
+const AppContainer = styled.div`
+  color: ${props => props.theme.textColor};
+  background-color: ${props => props.theme.backgroundDarkColor};
+  min-height: 100vh;
+`
 
 function App() {
 
@@ -14,30 +22,38 @@ function App() {
   const [error, setError] = useState(null);  
   const [region, setRegion] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(() => {
     async function fetchInitialCountries () {
+      setIsLoading(true);
       const [error, data] = await getAllCountries();
       setError(error);
       setCountries(data);
+      setIsLoading(false);
     }
     fetchInitialCountries();
   }, [])
 
   return (
     <Router>
-    <div className="App">
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>  
+    <AppContainer className="App">
       <Header setDarkMode={setDarkMode} darkMode={darkMode}/>
       <Switch>
           <Route path="/country/:id">
-            <DetailCountry />
+            <DetailCountry darkMode={darkMode}/>
           </Route>
           <Route path="/">
-            <ListCountries countries={countries} setCountries={setCountries} error={error} setError={setError} region={region} setRegion={setRegion}/>
+            <ListCountries countries={countries} setCountries={setCountries} error={error} 
+              setError={setError} region={region} setRegion={setRegion} 
+              setIsLoading={setIsLoading} isLoading={isLoading} 
+              />
           </Route>
         </Switch>
-    </div>
+    </AppContainer>
+    </ThemeProvider>
     </Router>
   );
 }

@@ -6,7 +6,7 @@ const CountryInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 64px 28px;
-    gap: 32px;
+    gap: 64px;
     img {
         width: min(90%, 450px);
         object-fit: contain;
@@ -35,8 +35,7 @@ const CountryInfoContainer = styled.div`
         justify-content: space-around;
         align-items: flex-start;
         img {
-            width: 50%;
-            min-width: 50%;
+            width: min(50%, 700px);
         }
         &>div {
             display: grid;

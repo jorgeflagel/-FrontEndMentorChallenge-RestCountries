@@ -34,25 +34,27 @@ const ListCountriesContainer = styled.div`
     
 `
 
-export default function ListCountries({countries, setCountries, error, setError, region, setRegion}) {
+export default function ListCountries({countries, setCountries, error, setError, region, setRegion, isLoading, setIsLoading}) {
 
     const [name, setName] = useState("");
 
     return (
         <ListCountriesContainer>
             <div className="filters">
-                <SearchCountry setName={setName} name={name} setCountries={setCountries} setError={setError}/>
+                <SearchCountry setName={setName} name={name} setCountries={setCountries} setError={setError} setIsLoading={setIsLoading}/>
                 <RegionSelect setRegion={setRegion} region={region} />
             </div>
             {error 
                 ? <p>{`${error.status || "Unknown error"}: ${error.statusText || "an error has occurred."}`}</p> 
-                :   <>
-                        <div className="countries">
-                            {countries
-                                .filter(el =>  region ? el.region === region : el)
-                                .map(country => <CountryCard country={country} key={country.alpha3Code}/>)}
-                        </div>
-                    </>
+                : isLoading
+                    ?  <div class="loader"></div> 
+                    :   <>
+                            <div className="countries">
+                                {countries
+                                    .filter(el =>  region ? el.region === region : el)
+                                    .map(country => <CountryCard country={country} key={country.alpha3Code}/>)}
+                            </div>
+                        </>
             }
             
         </ListCountriesContainer>

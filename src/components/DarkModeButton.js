@@ -7,6 +7,7 @@ const Button = styled.button`
     align-items: center;
     cursor: pointer;
     background: transparent;
+    color: ${props => props.theme.textColor};
 `;
 
 function DarkModeButton({ setDarkMode, darkMode}) {
@@ -16,8 +17,8 @@ function DarkModeButton({ setDarkMode, darkMode}) {
     return (
         <Button onClick={handleClick}>
             {darkMode 
-                ? <><MaterialIcon key="icon-light" icon="light_mode"/> Light Mode</>
-                : <><MaterialIcon key="icon-dark" icon="dark_mode"/> Dark Mode</>
+                ? <><MaterialIcon key="icon-light" icon="light_mode" color="hsl(0, 0%, 100%)"/> Light Mode</>
+                : <><MaterialIcon key="icon-dark" icon="dark_mode" color="hsl(200, 15%, 8%)"/> Dark Mode</>
             }
                       
         </Button>

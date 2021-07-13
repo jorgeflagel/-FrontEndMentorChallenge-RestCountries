@@ -5,9 +5,9 @@ import styled from 'styled-components';
 const CardContainer = styled.div`
     width: 264px;
     min-height: 336px;
-    border: 1px solid;
     border-radius: 5px;
     cursor: pointer;
+    background-color: ${props => props.theme.backgroundLightColor};
     img {
         border-radius: 5px 5px 0 0;
         width: 100%;

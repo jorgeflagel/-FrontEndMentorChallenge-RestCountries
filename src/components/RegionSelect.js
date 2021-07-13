@@ -4,6 +4,9 @@ import styled from 'styled-components';
 const Select = styled.select`
   width: 200px;
   cursor: pointer;
+  background-color: ${props => props.theme.backgroundLightColor};
+  color: ${props => props.theme.textColor};
+
 `
 
 export default function RegionSelect({ setRegion, region }) {

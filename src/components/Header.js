@@ -9,7 +9,7 @@ const HeaderStyled = styled.div`
     height: 80px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid;
+    background-color: ${props => props.theme.backgroundLightColor};
     h1 {
         font-size: 14px;
         font-weight: 800;

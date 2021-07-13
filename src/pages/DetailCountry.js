@@ -15,9 +15,17 @@ const BackButton = styled.button`
     height: 32px;
     cursor: pointer;
     margin: 40px 24px;
+    background-color: ${props => props.theme.backgroundLightColor};
+    border-radius: 5px;
+    color: ${props => props.theme.textColor};
+    font-size: 14px;
+    font-weight: 300;
+    @media screen and (min-width: 764px) {
+        font-size: 16px;
+    }
 `;
 
-export default function DetailCountry() {
+export default function DetailCountry({darkMode}) {
 
     const code = useParams().id;
 
@@ -43,11 +51,11 @@ export default function DetailCountry() {
 
     return (
         <>
-            <BackButton onClick={handleClick}><MaterialIcon icon="arrow_back" /> Back</BackButton>
+            <BackButton onClick={handleClick}><MaterialIcon icon="arrow_back" key={darkMode ? "ButtonDark" : "ButtonLight"} color={darkMode ? "hsl(0, 0%, 100%)" : "hsl(200, 15%, 8%)"} /> Back</BackButton>
             {error 
             ? <p>{`${error.status || "Unknown error"}: ${error.statusText || "an error has ocurred"}`}</p> 
             : isLoading 
-                ? <p>Is Loading...</p>
+                ?  <div class="loader"></div> 
                 : <CountryInfo country={country}/>
             }
         </>
