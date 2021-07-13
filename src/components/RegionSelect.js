@@ -1,11 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Select = styled.select`
+  width: 200px;
+  cursor: pointer;
+`
 
 export default function RegionSelect({ setRegion, region }) {
 
   const handleChange = (e) => setRegion(e.target.value)
 
     return (
-        <select name="region" onChange={handleChange} value={region || "Filter By Region"}>
+        <Select name="region" onChange={handleChange} value={region || "Filter By Region"}>
           <option value="Filter By Region" hidden>Filter By Region</option>
           <option value=""></option>
           <option value="Africa">Africa</option>
@@ -13,6 +19,6 @@ export default function RegionSelect({ setRegion, region }) {
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
           <option value="Oceania">Oceania</option>
-        </select>
+        </Select>
     )
 }

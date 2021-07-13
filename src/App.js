@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
 import Header from './components/Header';
@@ -7,13 +7,13 @@ import ListCountries from './pages/ListCountries';
 import DetailCountry from './pages/DetailCountry';
 
 import { getAllCountries } from './helpers/fetchCountries';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
 
   const [countries, setCountries] = useState([]);
   const [error, setError] = useState(null);  
   const [region, setRegion] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <Header />
+      <Header setDarkMode={setDarkMode} darkMode={darkMode}/>
       <Switch>
           <Route path="/country/:id">
             <DetailCountry />

@@ -2,7 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { getCountryByCode } from '../helpers/fetchCountries';
 
-import BorderCountries from '../components/BorderCountries';
+import CountryInfo from '../components/CountryInfo';
+import styled from 'styled-components';
+import MaterialIcon from 'material-icons-react';
+
+const BackButton = styled.button`
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-around;
+    width: 104px;
+    height: 32px;
+    cursor: pointer;
+    margin: 40px 24px;
+`;
 
 export default function DetailCountry() {
 
@@ -30,30 +43,12 @@ export default function DetailCountry() {
 
     return (
         <>
-            <button onClick={handleClick}>Back</button>
+            <BackButton onClick={handleClick}><MaterialIcon icon="arrow_back" /> Back</BackButton>
             {error 
             ? <p>{`${error.status || "Unknown error"}: ${error.statusText || "an error has ocurred"}`}</p> 
             : isLoading 
                 ? <p>Is Loading...</p>
-                : <>
-                    <div>
-                        <img src={country.flag} alt={country.name} width={320}/>
-                        <div>
-                            <h2>{country.name}</h2>
-                            <p><strong>Native Name:     </strong>{country.nativeName} </p>
-                            <p><strong>Population: </strong>{country.population}</p>
-                            <p><strong>Region: </strong>{country.region}</p>
-                            <p><strong>Sub Region: </strong>{country.subregion}</p>
-                            <p><strong>Capital: </strong>{country.capital}</p>
-                        </div>
-                        <div>
-                            <p><strong>Top Level Domain: </strong>{country.topLevelDomain[0]}</p>
-                            <p><strong>Currencies: </strong>{country.currencies.map(curr => curr.name).join(', ')}</p>
-                            <p><strong>Languages: </strong>{country.languages.map(lang => lang.name).join(', ')}</p>
-                        </div>
-                        <BorderCountries borders={country.borders} />
-                    </div>
-                </>
+                : <CountryInfo country={country}/>
             }
         </>
     )

@@ -1,8 +1,26 @@
 import React from 'react';
+import MaterialIcon from 'material-icons-react';
+import styled from 'styled-components';
 
-function DarkModeButton() {
+const Button = styled.button`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: transparent;
+`;
+
+function DarkModeButton({ setDarkMode, darkMode}) {
+
+    const handleClick = () => setDarkMode(darkMode => !darkMode)
+
     return (
-        <button>Dark Mode</button>
+        <Button onClick={handleClick}>
+            {darkMode 
+                ? <><MaterialIcon key="icon-light" icon="light_mode"/> Light Mode</>
+                : <><MaterialIcon key="icon-dark" icon="dark_mode"/> Dark Mode</>
+            }
+                      
+        </Button>
     )
 }
 
