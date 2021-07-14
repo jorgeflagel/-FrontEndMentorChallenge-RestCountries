@@ -42,7 +42,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 
 ### Links
 
-- [Solution](https://www.frontendmentor.io/solutions/reactjs-wit-styledcomponents-_kXhQLo0l)
+- [Solution](https://www.frontendmentor.io/solutions/react-with-styledcomponents-jVZGsVHLS)
 - [Live Site](https://frontendmentorchallenge-restcountries.vercel.app/)
 
 ## My process
