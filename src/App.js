@@ -48,7 +48,7 @@ function App() {
           <Route path="/">
             <ListCountries countries={countries} setCountries={setCountries} error={error} 
               setError={setError} region={region} setRegion={setRegion} 
-              setIsLoading={setIsLoading} isLoading={isLoading} 
+              setIsLoading={setIsLoading} isLoading={isLoading} darkMode={darkMode} 
               />
           </Route>
         </Switch>

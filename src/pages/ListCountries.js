@@ -34,7 +34,7 @@ const ListCountriesContainer = styled.div`
     
 `
 
-export default function ListCountries({countries, setCountries, error, setError, region, setRegion, isLoading, setIsLoading}) {
+export default function ListCountries({countries, setCountries, error, setError, region, setRegion, isLoading, setIsLoading, darkMode}) {
 
     const [name, setName] = useState("");
 
@@ -42,7 +42,7 @@ export default function ListCountries({countries, setCountries, error, setError,
         <ListCountriesContainer>
             <div className="filters">
                 <SearchCountry setName={setName} name={name} setCountries={setCountries} setError={setError} setIsLoading={setIsLoading}/>
-                <RegionSelect setRegion={setRegion} region={region} />
+                <RegionSelect setRegion={setRegion} region={region} darkMode={darkMode}/>
             </div>
             {error 
                 ? <p>{`${error.status || "Unknown error"}: ${error.statusText || "an error has occurred."}`}</p> 

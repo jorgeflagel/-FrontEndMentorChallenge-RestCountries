@@ -35,7 +35,8 @@ const CountryInfoContainer = styled.div`
         justify-content: space-around;
         align-items: flex-start;
         img {
-            width: min(50%, 700px);
+            width: min(70%, 700px);
+            min-width: 300px;
         }
         &>div {
             display: grid;
