@@ -36,8 +36,8 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 
 ### Screenshot
 
-![Previous of the Main-page](./screenshot1.png)
-![Previous of the Form-modal](./screenshot2.png)
+![Page of the light mode](./screenshot1.png)
+![Previous of the dark mode](./screenshot2.png)
 
 
 ### Links
